@@ -1,14 +1,12 @@
-/* Importar una fuente profesional y legible, como Poppins o Merriweather */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Merriweather:wght@400;700&display=swap');
 
 :root {
-  /* Paleta de colores profesionales y kawaii */
-  --color-primary: #1e3a8a; /* Azul oscuro profesional */
-  --color-secondary: #f0f4ff; /* Azul pastel muy claro, casi blanco */
-  --color-accent: #f9a8d4; /* Rosa suave kawaii */
-  --color-text: #333; /* Gris oscuro para el texto principal */
-  --color-light-text: #666; /* Gris más claro para texto secundario */
-  --color-background: #fff; /* Fondo blanco */
+  --color-primary: #1e3a8a; 
+  --color-secondary: #f0f4ff; 
+  --color-accent: #f9a8d4;
+  --color-text: #333; 
+  --color-light-text: #666; 
+  --color-background: #fff; 
   --font-heading: 'Merriweather', serif;
   --font-body: 'Poppins', sans-serif;
 }
