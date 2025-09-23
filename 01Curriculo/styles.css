@@ -1,6 +1,60 @@
-header{
-    font-size: large;
+/* Importar una fuente profesional y legible, como Poppins o Merriweather */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Merriweather:wght@400;700&display=swap');
+
+:root {
+  /* Paleta de colores profesionales y kawaii */
+  --color-primary: #1e3a8a; /* Azul oscuro profesional */
+  --color-secondary: #f0f4ff; /* Azul pastel muy claro, casi blanco */
+  --color-accent: #f9a8d4; /* Rosa suave kawaii */
+  --color-text: #333; /* Gris oscuro para el texto principal */
+  --color-light-text: #666; /* Gris más claro para texto secundario */
+  --color-background: #fff; /* Fondo blanco */
+  --font-heading: 'Merriweather', serif;
+  --font-body: 'Poppins', sans-serif;
 }
-footer {
-    background-color: aqua;
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+}
+
+.container-main {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--color-secondary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-primary); 
+}
+
+
+.container-nav header {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-nav nav {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-background);
+}
+
+.container-nav a {
+  color: var(--color-background);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.container-nav a:hover {
+  color: var(--color-accent); /* Efecto hover kawaii */
 }
