@@ -54,5 +54,11 @@ body {
 }
 
 .container-nav a:hover {
-  color: var(--color-accent); /* Efecto hover kawaii */
+  color: var(--color-background);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+
+.container-nav a:hover {
+  color: var(--color-accent); 
 }
