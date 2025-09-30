@@ -2,7 +2,14 @@
     margin: 0px;
     padding: 0px;
 }
-
+a{
+    text-decoration: none;
+    color: aqua;
+}
+a:hover{
+    text-decoration: none;
+    color: #ffff;
+}
 body{
     background-image: url(../image/fondo.jpg);
     background-size: cover;

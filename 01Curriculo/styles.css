@@ -7,8 +7,8 @@
   --color-text: #333; 
   --color-light-text: #666; 
   --color-background: #fff; 
-  --font-heading: 'Merriweather', serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-heading: 'Roboto';
+  --font-body: 'Roboto';
 }
 
 body {
@@ -19,6 +19,7 @@ body {
   margin: 0;
   padding: 2rem;
 }
+
 
 .container-main {
   max-width: 900px;
@@ -54,11 +55,41 @@ body {
 }
 
 .container-nav a:hover {
-  color: var(--color-background);
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.3s ease;
-
-.container-nav a:hover {
   color: var(--color-accent); 
+  text-decoration: none;
+}
+
+.container-profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+.container-profile .container-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container-profile .container-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.container-profile .text {
+    flex: 1;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Ejemplo de formulario</title>
+  <script src="./js/validacion.js"></script>
+</head>
+<body>
+  <p>
+    Todos los formularios en la web manejan métodos para el envío de las diferentes peticiones que realiza el usuario, considerando la arquitectura cliente-servidor. 
+    El manejo de las peticiones se hace por medio del protocolo HTTP y actualmente HTTPS. 
+    Cada petición debe ser atendida en un tiempo de respuesta conforme al modelo TCP/IP. 
+    Los métodos principales de los formularios son:
+  </p>
+
+  <ol>
+    <li>
+      <strong>GET:</strong> Este método se encarga de enviar la información del formulario por medio de la URL del navegador. 
+      Esto puede permitir inyecciones de código y violaciones de seguridad.
+    </li>
+    <li>
+      <strong>POST:</strong> Este método se encarga de enviar la información para registrar cambios o nuevos datos en el sistema. 
+      Los datos no son visibles en la URL, lo que ofrece mayor seguridad.
+    </li>
+  </ol>
+  <p>En resumen, los métodos son:</p>
+
+  <ul>
+    <li><strong>GET:</strong> Sirve para enviar y realizar operaciones de lectura o consulta.</li>
+    <li><strong>POST:</strong> Sirve para enviar información a un recurso en el servidor con el fin de registrarlo.</li>
+    <li><strong>DELETE:</strong> Sirve para eliminar un recurso específico dentro del servidor obteniendo una respuesta de actualización.</li>
+    <li><strong>PUT:</strong> Sirve para almacenar la información de un recurso particular y conectarse al servicio para actualizarlo.</li>
+    <li><strong>HEAD:</strong> Sirve para regresar las cabeceras HTTP asociadas a un recurso.</li>
+  </ul>
+  <div class="container-form">
+    <form method="post" id="formulario" name="formulario" onsubmit="return validar(this)" action="">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Ingresa aquí tu nombre">
+      <br>
+
+      <label for="edad">Edad</label>
+      <input type="number" id="edad" name="edad" placeholder="Ingresa aquí tu edad">
+      <br>
+
+      <label for="correo">Email</label>
+      <input type="email" id="correo" name="correo" placeholder="Ingresa aquí tu correo">
+      <br>
+
+      <input type="submit" name="enviar" value="Enviar Registro">
+      <br>
+      <input type="reset" name="borrar" value="Borrar Datos">
+    </form>
+  </div>
+  <a href="../index.html">Regresar a index</a>
+</body>
+</html>
