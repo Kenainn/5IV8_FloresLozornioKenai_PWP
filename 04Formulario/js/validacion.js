@@ -39,5 +39,7 @@ function validar(formulario) {
         }
     }
 
-    return true;
+    alert("¡Registro exitoso!");
+    formulario.reset(); 
+    return false; 
 }
