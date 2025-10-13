@@ -1,54 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 1</title>
+    <title>Problemas Algoritmia</title>
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
     <div class="container">
-        <form method="post" name="formulario" action="">
-            <label for="">Formulario para calculo de inversiones Banco Kawaii con un incremento del 8.05% anual</label>
-            <br>
-            <div class="container-table">
-                <table class="table" border="10px">
-                    <tr>
-                        <td>
-                            Introduce la cantidad que deseas invertir por todo un año
-                        </td>
-                        <td>
-                            <input type="text" name="cantidad" id="cantidadi" onkeypress="return validarn(event)">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            
-                        </td>
-                        <td>
-                            <input type="button" value="calcular interes" name="enviar" onclick="interes()">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Su saldo total con el interes es de :
-                        </td>
-                        <td>
-                            <input type="text" name="sueldoi" id="saldoi" readonly="readonly" class="input_text">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <input type="button" value="borrar datos" name="borrar" onclick="borrari()">
-                        </td>
-                    </tr>
-                </table>
-            </div>
+        <h1>Problemas Algoritmia p1 </h1>
+
+        <form>
+            <h2>1 Cálculo de inversión (8.05% anual, máximo 18 meses)</h2>
+            <table class="table" border="10px">
+                <tr>
+                    <td>Cantidad a invertir:</td>
+                    <td><input type="text" id="cantidadi" onkeypress="return validarn(event)"></td>
+                </tr>
+                <tr>
+                    <td>Número de meses (máx. 18):</td>
+                    <td><input type="text" id="mesesi" onkeypress="return validarn(event)"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="Calcular interés" onclick="interes()"></td>
+                </tr>
+                <tr>
+                    <td>Saldo total con interés:</td>
+                    <td><input type="text" id="saldoi" readonly></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="Borrar datos" onclick="borrari()"></td>
+                </tr>
+            </table>
+        </form>
+
+        <form>
+            <h2>2 Sueldo con comisiones (10%)</h2>
+            <table class="table" border="10px">
+                <tr>
+                    <td>Sueldo base:</td>
+                    <td><input type="text" id="sueldo_base" onkeypress="return validarn(event)"></td>
+                </tr>
+                <tr>
+                    <td>Venta 1:</td>
+                    <td><input type="text" id="venta1" onkeypress="return validarn(event)"></td>
+                </tr>
+                <tr>
+                    <td>Venta 2:</td>
+                    <td><input type="text" id="venta2" onkeypress="return validarn(event)"></td>
+                </tr>
+                <tr>
+                    <td>Venta 3:</td>
+                    <td><input type="text" id="venta3" onkeypress="return validarn(event)"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="Calcular sueldo total" onclick="ej2_comisiones()"></td>
+                </tr>
+                <tr>
+                    <td>Comisión total:</td>
+                    <td><input type="text" id="comision_total" readonly></td>
+                </tr>
+                <tr>
+                    <td>Total a recibir:</td>
+                    <td><input type="text" id="sueldo_total" readonly></td>
+                </tr>
+            </table>
         </form>
 
 
+        <form>
+            <h2>3 Descuento del 15%</h2>
+            <table class="table" border="10px">
+                <tr>
+                    <td>Total de la compra:</td>
+                    <td><input type="text" id="compra_total" onkeypress="return validarn(event)"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="button" value="Aplicar descuento" onclick="ej3_descuento()"></td>
+                </tr>
+                <tr>
+                    <td>Total a pagar:</td>
+                    <td><input type="text" id="pago_final" readonly></td>
+                </tr>
+            </table>
+        </form>
+
+        <form>
+            <h2>4 Calificación final (Algoritmos)</h2>
+            <table class="table" border="10px">
+                <tr><td>Calificación 1:</td><td><input type="text" id="calif1" onkeypress="return validarn(event)"></td></tr>
+                <tr><td>Calificación 2:</td><td><input type="text" id="calif2" onkeypress="return validarn(event)"></td></tr>
+                <tr><td>Calificación 3:</td><td><input type="text" id="calif3" onkeypress="return validarn(event)"></td></tr>
+                <tr><td>Examen final:</td><td><input type="text" id="examen" onkeypress="return validarn(event)"></td></tr>
+                <tr><td>Trabajo final:</td><td><input type="text" id="trabajo" onkeypress="return validarn(event)"></td></tr>
+                <tr><td></td><td><input type="button" value="Calcular calificación final" onclick="ej4_calificacion()"></td></tr>
+                <tr><td>Calificación final:</td><td><input type="text" id="calif_final" readonly></td></tr>
+            </table>
+        </form>
+
+
+        <form>
+            <h2>5) Porcentaje de hombres y mujeres</h2>
+            <table class="table" border="10px">
+                <tr><td>Número de hombres:</td><td><input type="text" id="hombres" onkeypress="return validarn(event)"></td></tr>
+                <tr><td>Número de mujeres:</td><td><input type="text" id="mujeres" onkeypress="return validarn(event)"></td></tr>
+                <tr><td></td><td><input type="button" value="Calcular porcentajes" onclick="ej5_porcentajes()"></td></tr>
+                <tr><td>% Hombres:</td><td><input type="text" id="ph" readonly></td></tr>
+                <tr><td>% Mujeres:</td><td><input type="text" id="pm" readonly></td></tr>
+            </table>
+        </form>
+
+
+        <form>
+            <h2>6) Calcular edad</h2>
+            <table class="table" border="10px">
+                <tr><td>Año de nacimiento:</td><td><input type="text" id="anio_nac" onkeypress="return validarn(event)"></td></tr>
+                <tr><td>Año actual:</td><td><input type="text" id="anio_act" onkeypress="return validarn(event)"></td></tr>
+                <tr><td></td><td><input type="button" value="Calcular edad" onclick="ej6_edad()"></td></tr>
+                <tr><td>Edad:</td><td><input type="text" id="edad" readonly></td></tr>
+            </table>
+        </form>
     </div>
-<script src="./JS/Funcionese1.js"></script>
+
+    <script src="./JS/Funcionese1.js"></script>
 </body>
 </html>
