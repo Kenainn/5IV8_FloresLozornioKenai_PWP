@@ -1,0 +1,14 @@
+# Archivo: _config.yml
+
+exclude:
+  # Excluye la carpeta de dependencias dentro de tu proyecto Postman
+  - 10 Postman\node_modules
+  
+  # Opcional: Si la carpeta 10 Postman es solo código fuente y no parte del sitio final,
+  # puedes excluirla completamente.
+  - 10 Postman
+  
+  # Exclusiones estándar para proyectos con dependencias
+  - node_modules/
+  - package.json
+  - package-lock.json
