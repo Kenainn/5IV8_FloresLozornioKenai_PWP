@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios Kawaii 💜</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🌸 Ejercicios Kawaii 🌸</h1>
+
+  <div class="card">
+    <h2>Ejercicio 1</h2>
+    <p>Leer 2 números y:</p>
+    <ul>
+      <li>Si son iguales → multiplicar</li>
+      <li>Si el primero es mayor → restar</li>
+      <li>Si el primero es menor → sumar</li>
+    </ul>
+    <input type="number" id="num1" placeholder="Primer número">
+    <input type="number" id="num2" placeholder="Segundo número">
+    <button onclick="ejercicio1()">Calcular</button>
+    <p id="res1"></p>
+  </div>
+
+  <div class="card">
+    <h2>Ejercicio 2</h2>
+    <p>Leer 3 números diferentes e imprimir el mayor.</p>
+    <input type="number" id="a" placeholder="Número 1">
+    <input type="number" id="b" placeholder="Número 2">
+    <input type="number" id="c" placeholder="Número 3">
+    <button onclick="ejercicio2()">Encontrar mayor</button>
+    <p id="res2"></p>
+  </div>
+
+  <div class="card">
+    <h2>Ejercicio 3</h2>
+    <p>Calcular pago por horas extra:</p>
+    <input type="number" id="horas" placeholder="Horas trabajadas">
+    <input type="number" id="pagoHora" placeholder="Pago por hora normal">
+    <button onclick="ejercicio3()">Calcular total</button>
+    <p id="res3"></p>
+  </div>
+
+  <div class="card">
+    <h2>Ejercicio 4</h2>
+    <p>Calcular utilidad anual según antigüedad:</p>
+    <input type="number" id="salario" placeholder="Salario mensual">
+    <input type="number" id="antiguedad" placeholder="Años en la empresa">
+    <button onclick="ejercicio4()">Calcular utilidad</button>
+    <p id="res4"></p>
+  </div>
+
+  <script src="script.js"></script>
+  <a href="../index.html">Regresar a index</a>
+</body>
+</html>
