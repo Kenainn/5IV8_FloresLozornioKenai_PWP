@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  background: radial-gradient(circle at center, #001100 0%, #000000 90%);
+  color: #00ff88;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.titulo {
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+  margin-top: 30px;
+}
+
+.buscador {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  border: 2px solid #00ff88;
+  border-radius: 10px;
+  background: transparent;
+  color: #00ff88;
+  font-size: 16px;
+  width: 250px;
+}
+
+button {
+  background-color: #00ff88;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #00ffaa;
+  transform: scale(1.05);
+}
+
+.resultado {
+  margin-top: 40px;
+}
+
+#imagenPersonaje {
+  width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00ff88;
+}
+
+.info {
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px solid #00ff88;
+  border-radius: 15px;
+  display: inline-block;
+  text-align: left;
+  background: rgba(0, 20, 0, 0.7);
+  box-shadow: 0 0 15px #00ff88 inset;
+  max-width: 400px;
+}
+
+.info p {
+  margin: 8px 0;
+  text-shadow: 0 0 5px #00ff88;
+}
