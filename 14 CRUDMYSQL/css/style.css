@@ -1,0 +1,62 @@
+/* Decoracion kawai bonita */
+body {
+    background-color: #ffe4e1; /* Color de fondo rosa claro */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente divertida */
+    color: #ff69b4; /* Color de texto rosa fuerte */
+}
+h1, h2, h3 {
+    color: #ff1493; /* Color de encabezados rosa intenso */
+    text-align: center;
+}
+button {
+    background-color: #ffb6c1; /* Color de fondo del botón rosa claro */
+    border: none;
+    border-radius: 12px; /* Bordes redondeados */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0 4px #d2691e; /* Sombra para efecto 3D */
+}
+button:hover {
+    background-color: #ff69b4; /* Cambia a un rosa más fuerte al pasar el ratón */
+}
+input[type="text"], input[type="password"], input[type="email"] {
+    border: 2px solid #ff69b4; /* Borde rosa fuerte */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 8px;
+    width: 200px;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    border-color: #ff1493; /* Cambia el borde a rosa intenso al enfocar */
+    outline: none;
+}
+.container {
+    background-color: #fff0f5; /* Fondo blanco con un toque rosa */
+    border: 2px solid #ff69b4; /* Borde rosa fuerte */
+    border-radius: 15px; /* Bordes muy redondeados */
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5); /* Sombra suave */
+}
+a {
+    color: #ff1493; /* Color de enlaces rosa intenso */
+    text-decoration: none;
+}
+
+input[type="number"] {
+    border: 2px solid #ff69b4; /* Borde rosa fuerte */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 8px;
+    width: 100px;
+}
+a:hover {
+    text-decoration: underline;
+    color: #ff69b4; /* Cambia a un rosa más fuerte al pasar el ratón */
+    
+}

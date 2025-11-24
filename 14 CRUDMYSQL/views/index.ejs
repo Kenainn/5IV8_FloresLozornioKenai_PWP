@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Registro de Estudiantes</title>
+</head>
+<body>
+    <h1>Registro de estudiantes</h1>
+
+    <form action="/estudiantes" method="post">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="edad">Edad: </label>
+        <input type="number" name="edad" id="edad" required>
+
+        <label for="curso">Curso: </label>
+        <input type="text" name="curso" id="curso" required>
+
+        <button type="submit">Registrar Estudiante</button>
+    </form>
+
+    <ul>
+        <% estudiantes.forEach(function(estudiante){ %>
+            <li>
+                <strong>Nombre:</strong> <%= estudiante.nombre %> , 
+                <strong>Edad:</strong> <%= estudiante.edad %> , 
+                <strong>Curso:</strong> <%= estudiante.curso %> 
+                <a href="/estudiantes/edit/<%= estudiante.id %>">Editar</a>
+                <a href="/estudiantes/delete/<%= estudiante.id %>">Eliminar</a>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
