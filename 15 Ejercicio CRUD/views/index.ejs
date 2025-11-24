@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Bitácora de Calibraciones</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Bitácora de Calibraciones</h1>
+    <a class="btn" href="/nuevo">Nuevo Registro</a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Instrumento</th>
+          <th>Fecha Actual</th>
+          <th>Última Calib.</th>
+          <th>Lectura Antes</th>
+          <th>Lectura Después</th>
+          <th>Próxima</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(i=>{ %>
+          <tr>
+            <td><%= i.id %></td>
+            <td><%= i.instrumento %></td>
+            <td><%= i.fecha_calibracion_actual ? i.fecha_calibracion_actual.toISOString().slice(0,10) : '' %></td>
+            <td><%= i.ultima_calibracion ? i.ultima_calibracion.toISOString().slice(0,10) : '' %></td>
+            <td><%= i.lectura_antes %></td>
+            <td><%= i.lectura_despues %></td>
+            <td><%= i.proxima_calibracion ? i.proxima_calibracion.toISOString().slice(0,10) : '' %></td>
+            <td>
+              <a href="/editar/<%= i.id %>">Editar</a>
+              <a href="/borrar/<%= i.id %>" onclick="return confirm('Borrar?')">Borrar</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
