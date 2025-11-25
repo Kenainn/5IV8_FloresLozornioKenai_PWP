@@ -11,37 +11,99 @@
     <h1>Bitácora de Calibraciones</h1>
     <a class="btn" href="/nuevo">Nuevo Registro</a>
 
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Instrumento</th>
-          <th>Fecha Actual</th>
-          <th>Última Calib.</th>
-          <th>Lectura Antes</th>
-          <th>Lectura Después</th>
-          <th>Próxima</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% items.forEach(i=>{ %>
+    <!-- Buscador -->
+    <div style="margin: 20px 0;">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Buscar por instrumento..."
+        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"
+      >
+    </div>
+
+    <% if(items.length === 0) { %>
+      <div style="text-align:center; padding:40px; color:#757575;">
+        <p>No hay registros todavía. ¡Crea el primero!</p>
+      </div>
+    <% } else { %>
+      <table id="calibrationTable">
+        <thead>
           <tr>
-            <td><%= i.id %></td>
-            <td><%= i.instrumento %></td>
-            <td><%= i.fecha_calibracion_actual ? i.fecha_calibracion_actual.toISOString().slice(0,10) : '' %></td>
-            <td><%= i.ultima_calibracion ? i.ultima_calibracion.toISOString().slice(0,10) : '' %></td>
-            <td><%= i.lectura_antes %></td>
-            <td><%= i.lectura_despues %></td>
-            <td><%= i.proxima_calibracion ? i.proxima_calibracion.toISOString().slice(0,10) : '' %></td>
-            <td>
-              <a href="/editar/<%= i.id %>">Editar</a>
-              <a href="/borrar/<%= i.id %>" onclick="return confirm('Borrar?')">Borrar</a>
-            </td>
+            <th>ID</th>
+            <th>Instrumento</th>
+            <th>Fecha Actual</th>
+            <th>Última Calib.</th>
+            <th>Lectura Antes</th>
+            <th>Lectura Después</th>
+            <th>Próxima</th>
+            <th>Acciones</th>
           </tr>
-        <% }) %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% items.forEach(i=>{ %>
+            <tr>
+              <td><%= i.id %></td>
+              <td><%= i.instrumento %></td>
+              <td><%= i.fecha_calibracion_actual ? i.fecha_calibracion_actual.toISOString().slice(0,10) : '' %></td>
+              <td><%= i.ultima_calibracion ? i.ultima_calibracion.toISOString().slice(0,10) : '' %></td>
+              <td><%= i.lectura_antes || '-' %></td>
+              <td><%= i.lectura_despues || '-' %></td>
+              <td><%= i.proxima_calibracion ? i.proxima_calibracion.toISOString().slice(0,10) : '' %></td>
+              <td>
+                <a href="/editar/<%= i.id %>">Editar</a>
+                <a href="/borrar/<%= i.id %>" onclick="return confirm('¿Estás seguro de eliminar este registro?')" style="color:#d32f2f;">Borrar</a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <div id="noResults" style="display:none; text-align:center; padding:40px; color:#757575;">
+        <p>No se encontraron resultados.</p>
+      </div>
+    <% } %>
   </div>
+
+  <script>
+    // Función de búsqueda en tiempo real
+    document.getElementById('searchInput')?.addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      const table = document.getElementById('calibrationTable');
+      const rows = table?.getElementsByTagName('tbody')[0]?.getElementsByTagName('tr');
+      const noResults = document.getElementById('noResults');
+      let visibleCount = 0;
+
+      if(!rows) return;
+
+      for(let i = 0; i < rows.length; i++) {
+        const instrumento = rows[i].getElementsByTagName('td')[1]?.textContent.toLowerCase();
+        
+        if(instrumento && instrumento.includes(searchTerm)) {
+          rows[i].style.display = '';
+          visibleCount++;
+        } else {
+          rows[i].style.display = 'none';
+        }
+      }
+
+      // Mostrar mensaje si no hay resultados
+      if(visibleCount === 0 && searchTerm !== '') {
+        table.style.display = 'none';
+        noResults.style.display = 'block';
+      } else {
+        table.style.display = 'table';
+        noResults.style.display = 'none';
+      }
+    });
+
+    // Confirmar antes de borrar
+    document.querySelectorAll('a[href*="/borrar/"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if(!confirm('¿Estás seguro de que deseas eliminar este registro? Esta acción no se puede deshacer.')) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -9,33 +9,110 @@
 <body>
   <div class="container">
     <h1><%= item && item.id ? 'Editar' : 'Nueva' %> entrada</h1>
-    <form method="post" action="<%= item && item.id ? '/actualizar/' + item.id : '/crear' %>">
-      <label>Instrumento / Sensor</label>
-      <input name="instrumento" value="<%= item ? item.instrumento : '' %>" required minlength="2">
+    <form method="post" action="<%= item && item.id ? '/actualizar/' + item.id : '/crear' %>" id="calibrationForm">
+      
+      <label>Instrumento / Sensor <span style="color:red">*</span></label>
+      <input 
+        name="instrumento" 
+        id="instrumento"
+        value="<%= item ? item.instrumento : '' %>" 
+        required 
+        minlength="3"
+        maxlength="100"
+      >
+      <% if(errors && errors.instrumento){ %>
+        <div style="color:#d32f2f;font-size:13px;margin-top:5px;"><%= errors.instrumento %></div>
+      <% } %>
+      <div style="font-size:12px;color:#757575;text-align:right;margin-top:3px;">
+        <span id="instrumento-count">0</span>/100
+      </div>
 
       <label>Última Calibración</label>
-      <input type="date" name="ultima_calibracion" value="<%= item && item.ultima_calibracion ? item.ultima_calibracion.toISOString().slice(0,10) : '' %>">
+      <input 
+        type="date" 
+        name="ultima_calibracion" 
+        id="ultima_calibracion"
+        value="<%= item && item.ultima_calibracion ? item.ultima_calibracion.toISOString().slice(0,10) : '' %>"
+      >
+      <% if(errors && errors.ultima_calibracion){ %>
+        <div style="color:#d32f2f;font-size:13px;margin-top:5px;"><%= errors.ultima_calibracion %></div>
+      <% } %>
 
-      <label>Fecha de Calibración Actual</label>
-      <input type="date" name="fecha_calibracion_actual" value="<%= item && item.fecha_calibracion_actual ? item.fecha_calibracion_actual.toISOString().slice(0,10) : '' %>" required>
+      <label>Fecha de Calibración Actual <span style="color:red">*</span></label>
+      <input 
+        type="date" 
+        name="fecha_calibracion_actual" 
+        id="fecha_calibracion_actual"
+        value="<%= item && item.fecha_calibracion_actual ? item.fecha_calibracion_actual.toISOString().slice(0,10) : '' %>" 
+        required
+      >
+      <% if(errors && errors.fecha_calibracion_actual){ %>
+        <div style="color:#d32f2f;font-size:13px;margin-top:5px;"><%= errors.fecha_calibracion_actual %></div>
+      <% } %>
 
       <label>Estándar de Referencia</label>
-      <input name="estandar_referencia" value="<%= item ? item.estandar_referencia : '' %>">
+      <input 
+        name="estandar_referencia" 
+        id="estandar_referencia"
+        value="<%= item ? item.estandar_referencia : '' %>"
+        maxlength="100"
+      >
+      <% if(errors && errors.estandar_referencia){ %>
+        <div style="color:#d32f2f;font-size:13px;margin-top:5px;"><%= errors.estandar_referencia %></div>
+      <% } %>
+      <div style="font-size:12px;color:#757575;text-align:right;margin-top:3px;">
+        <span id="estandar-count">0</span>/100
+      </div>
 
       <label>Lectura Antes</label>
-      <input name="lectura_antes" value="<%= item ? item.lectura_antes : '' %>">
+      <input 
+        name="lectura_antes" 
+        value="<%= item ? item.lectura_antes : '' %>"
+      >
 
       <label>Lectura Después</label>
-      <input name="lectura_despues" value="<%= item ? item.lectura_despues : '' %>">
+      <input 
+        name="lectura_despues" 
+        value="<%= item ? item.lectura_despues : '' %>"
+      >
 
       <label>Certificado Asociado (número/archivo)</label>
-      <input name="certificado" value="<%= item ? item.certificado : '' %>">
+      <input 
+        name="certificado" 
+        id="certificado"
+        value="<%= item ? item.certificado : '' %>"
+        maxlength="50"
+      >
+      <% if(errors && errors.certificado){ %>
+        <div style="color:#d32f2f;font-size:13px;margin-top:5px;"><%= errors.certificado %></div>
+      <% } %>
+      <div style="font-size:12px;color:#757575;text-align:right;margin-top:3px;">
+        <span id="certificado-count">0</span>/50
+      </div>
 
       <label>Próxima Calibración</label>
-      <input type="date" name="proxima_calibracion" value="<%= item && item.proxima_calibracion ? item.proxima_calibracion.toISOString().slice(0,10) : '' %>">
+      <input 
+        type="date" 
+        name="proxima_calibracion" 
+        id="proxima_calibracion"
+        value="<%= item && item.proxima_calibracion ? item.proxima_calibracion.toISOString().slice(0,10) : '' %>"
+      >
+      <% if(errors && errors.proxima_calibracion){ %>
+        <div style="color:#d32f2f;font-size:13px;margin-top:5px;"><%= errors.proxima_calibracion %></div>
+      <% } %>
 
       <label>Descripción</label>
-      <textarea name="descripcion"><%= item ? item.descripcion : '' %></textarea>
+      <textarea 
+        name="descripcion" 
+        id="descripcion"
+        maxlength="500"
+      ><%= item ? item.descripcion : '' %></textarea>
+      <% if(errors && errors.descripcion){ %>
+        <div style="color:#d32f2f;font-size:13px;margin-top:5px;"><%= errors.descripcion %></div>
+      <% } %>
+      <div style="font-size:12px;color:#757575;text-align:right;margin-top:3px;">
+        <span id="descripcion-count">0</span>/500
+      </div>
 
       <% if(errors && Object.keys(errors).length){ %>
         <div class="errors">
@@ -49,5 +126,70 @@
       <a class="btn secondary" href="/">Cancelar</a>
     </form>
   </div>
+
+  <script>
+    // Actualizar contadores de caracteres
+    function updateCharCount(inputId, countId, maxLength) {
+      const input = document.getElementById(inputId);
+      const counter = document.getElementById(countId);
+      
+      if(!input || !counter) return;
+      
+      function update() {
+        const currentLength = input.value.length;
+        counter.textContent = currentLength;
+        
+        if(currentLength > maxLength * 0.9) {
+          counter.style.color = '#d32f2f';
+        } else {
+          counter.style.color = '#757575';
+        }
+      }
+      
+      input.addEventListener('input', update);
+      update();
+    }
+
+    updateCharCount('instrumento', 'instrumento-count', 100);
+    updateCharCount('estandar_referencia', 'estandar-count', 100);
+    updateCharCount('certificado', 'certificado-count', 50);
+    updateCharCount('descripcion', 'descripcion-count', 500);
+
+    // Validación antes de enviar
+    document.getElementById('calibrationForm').addEventListener('submit', function(e) {
+      let isValid = true;
+      const errors = [];
+
+      const instrumento = document.getElementById('instrumento').value.trim();
+      if(instrumento.length < 3) {
+        isValid = false;
+        errors.push('El instrumento debe tener al menos 3 caracteres');
+      }
+
+      const fechaActual = document.getElementById('fecha_calibracion_actual').value;
+      if(!fechaActual) {
+        isValid = false;
+        errors.push('La fecha de calibración actual es obligatoria');
+      }
+
+      const ultimaCalibracion = document.getElementById('ultima_calibracion').value;
+      const proximaCalibracion = document.getElementById('proxima_calibracion').value;
+
+      if(ultimaCalibracion && fechaActual && new Date(ultimaCalibracion) > new Date(fechaActual)) {
+        isValid = false;
+        errors.push('La última calibración debe ser anterior a la actual');
+      }
+
+      if(proximaCalibracion && fechaActual && new Date(proximaCalibracion) < new Date(fechaActual)) {
+        isValid = false;
+        errors.push('La próxima calibración debe ser posterior a la actual');
+      }
+
+      if(!isValid) {
+        e.preventDefault();
+        alert('Por favor corrige los siguientes errores:\n\n' + errors.join('\n'));
+      }
+    });
+  </script>
 </body>
 </html>
